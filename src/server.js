@@ -14,6 +14,7 @@ const attendanceRoutes = require("./routes/attendanceRoutes")
 const submissionRoutes = require("./routes/submissionRoutes")
 const fileRoutes = require("./routes/fileRoutes")
 const payrollRoutes = require("./routes/payrollRoutes");
+const cronRoutes = require('./routes/cronRoutes');
 
 // Load env vars
 dotenv.config()
@@ -40,6 +41,7 @@ app.use("/api/attendance", attendanceRoutes)
 app.use("/api/submissions", submissionRoutes)
 app.use("/api/files", fileRoutes)
 app.use("/api/payroll", payrollRoutes);
+app.use("/api/cron", cronRoutes);
 
 // Basic route
 app.get("/", (req, res) => {

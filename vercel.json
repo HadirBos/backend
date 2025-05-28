@@ -11,5 +11,15 @@
             "src": "/(.*)",
             "dest": "src/server.js"
         }
+    ],
+    "crons": [
+        {
+            "path": "/api/cron/auto-payroll",
+            "schedule": "0 0 1 * *"
+        },
+        {
+            "path": "/api/cron/auto-absent",
+            "schedule": "0 17 * * 1-5"
+        }
     ]
 }
