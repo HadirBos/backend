@@ -31,7 +31,8 @@ app.use(cors({
     'https://hadirbos-faisalakbarr-faisalakbarrs-projects.vercel.app',
     'https://hadirbos.vercel.app', 
     'http://localhost:5000',
-    'http://localhost:3000'  
+    'http://localhost:3000',
+    'http://localhost:5173' 
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
