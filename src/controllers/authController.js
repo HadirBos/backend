@@ -16,6 +16,13 @@ exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    // Validate input
+    if (!email || !password) {
+      return res.status(400).json({ 
+        message: "Please provide both email and password" 
+      });
+    }
+
     // Check if user exists
     const user = await User.findOne({ email });
     if (!user) {
@@ -28,6 +35,9 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
+    // Generate token and send response
+    const token = generateToken(user._id);
+    
     res.json({
       _id: user._id,
       name: user.name,
@@ -35,10 +45,14 @@ exports.login = async (req, res) => {
       role: user.role,
       department: user.department,
       position: user.position,
-      token: generateToken(user._id),
+      token
     });
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    console.error('Login error:', err);
+    res.status(500).json({ 
+      message: "Server error", 
+      error: process.env.NODE_ENV === 'development' ? err.message : undefined 
+    });
   }
 };
 
