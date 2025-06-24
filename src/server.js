@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const { testCloudinaryConnection } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
 require("./scheduler/autoAbsent");
 require("./scheduler/autoPayroll");
@@ -18,6 +19,9 @@ const cronRoutes = require('./routes/cronRoutes');
 
 // Load env vars
 dotenv.config()
+
+// Test Cloudinary connection
+testCloudinaryConnection()
 
 const app = express()
 
