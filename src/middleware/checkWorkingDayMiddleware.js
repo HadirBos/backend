@@ -30,11 +30,11 @@ const checkWorkingDay = async (req, res, next) => {
       });
     }
 
-    if (currentHour < 8 || currentHour >= 17) {
-      return res.status(400).json({
-        message: "Attendance is only allowed between 08:00 and 17:00.",
-      });
-    }
+    // if (currentHour < 8 || currentHour >= 17) {
+    //   return res.status(400).json({
+    //     message: "Attendance is only allowed between 08:00 and 17:00.",
+    //   });
+    // }
 
     next();
   } catch (error) {
