@@ -9,7 +9,7 @@ const checkWorkingDay = async (req, res, next) => {
 
     // Cek hari libur nasional
     const { data: holidays } = await axios.get(
-      "https://api-harilibur.vercel.app/api"
+      ""
     );
 
     const todayHoliday = holidays.find(
