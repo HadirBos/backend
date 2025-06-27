@@ -15,7 +15,7 @@ const {
   createAttendanceAdminOnly,
 } = require("../controllers/attendanceController");
 const { protect, admin } = require("../middleware/authMiddleware");
-//const checkWorkingDay = require("../middleware/checkWorkingDayMiddleware");
+const checkWorkingDay = require("../middleware/checkWorkingDayMiddleware");
 
 router
   .route("/")
