@@ -19,7 +19,7 @@ const checkWorkingDay = require("../middleware/checkWorkingDayMiddleware");
 
 router
   .route("/")
-  .post(protect, checkWorkingDay, createAttendance)
+  .post(protect, createAttendance)
   .get(protect, getAttendances);
 
 router.get("/all", protect, getAllAttendances);
