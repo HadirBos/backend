@@ -44,10 +44,6 @@ const getPayrollsByEmployeeId = async (req, res) => {
       match: { role: "employee" },
     });
 
-    if (!payrolls || payrolls.length === 0) {
-      return res.status(404).json({ message: "Payroll not found" });
-    }
-
     res.status(200).json(payrolls);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -124,7 +120,7 @@ const updatePayroll = async (req, res) => {
 
     res.status(200).json(updatedPayroll);
   } catch (error) {
-    console.error( error);
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -212,11 +208,9 @@ const getPayrollStats = async (req, res) => {
         month: Number(month),
       };
     } else {
-      return res
-        .status(400)
-        .json({
-          message: "Please provide period or year (with optional month)",
-        });
+      return res.status(400).json({
+        message: "Please provide period or year (with optional month)",
+      });
     }
 
     const payrolls = await Payroll.find(query)
@@ -404,7 +398,10 @@ const getPayrollTrend = async (req, res) => {
       const targetMonth = Number(month);
       for (let i = 5; i >= 0; i--) {
         let date = new Date(targetYear, targetMonth - 1 - i, 1);
-        monthsToGenerate.push({ year: date.getFullYear(), month: date.getMonth() + 1 });
+        monthsToGenerate.push({
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+        });
       }
     }
 
@@ -431,7 +428,6 @@ const getPayrollTrend = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
 module.exports = {
   getAllPayroll,
