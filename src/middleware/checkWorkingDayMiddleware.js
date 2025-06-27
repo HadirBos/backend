@@ -9,19 +9,19 @@ const checkWorkingDay = async (req, res, next) => {
 
     // Cek hari libur nasional
     const { data: holidays } = await axios.get(
-      ""
+      "https://api-harilibur.vercel.app/api"
     );
 
-    const todayHoliday = holidays.find(
-      (holiday) =>
-        holiday.holiday_date === todayStr && holiday.is_national_holiday
-    );
+    //const todayHoliday = holidays.find(
+    //  (holiday) =>
+    //    holiday.holiday_date === todayStr && holiday.is_national_holiday
+    //);
 
-    if (todayHoliday) {
-      return res.status(400).json({
-        message: `Today is a national holiday: ${todayHoliday.holiday_name}. Attendance is not required.`,
-      });
-    }
+   // if (todayHoliday) {
+   //   return res.status(400).json({
+   //     message: `Today is a national holiday: ${todayHoliday.holiday_name}. Attendance is not required.`,
+   //   });
+    //}
 
     // Cek akhir pekan
     if (day === 0 || day === 6) {
